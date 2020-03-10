@@ -67,7 +67,8 @@ class App extends React.Component {
     console.log( "saved data is ", JSON.parse(localStorage.getItem("saveddata")));
     localStorage.setItem("saveddata", JSON.stringify(this.state.todoList));
     return (
-      <div className="app-wrapper">
+      <div className="app-container">
+        <div className="app-wrapper">
           <div className="form-wrapper">
             <TodoForm addTask={this.addTask} clearCompleted={this.clearCompleted}/>
           </div>
@@ -76,8 +77,8 @@ class App extends React.Component {
             tasks={this.state.todoList} 
             toggleCompleted={this.toggleCompleted} ></TodoList>
             <button onClick={this.clearCompleted}>Clear Completed</button>
-          </div>
-          
+        </div>
+      </div>
       </div>
     );
   }
