@@ -1,29 +1,31 @@
 import React from 'react';
 import TodoList from "./components/TodoList"
 import TodoForm from "./components/TodoForm";
+import "./App.css"
 
-const todoList = [
-    {
-      task: 'Organize Garage',
-      id: 1528817077286,
-      completed: false
-    },
-    {
-      task: 'Bake Cookies',
-      id: 1528817084358,
-      completed: false
-    }
-];
+// const todoList = [
+//     {
+//       task: 'Organize Garage',
+//       id: 1528817077286,
+//       completed: false
+//     },
+//     {
+//       task: 'Bake Cookies',
+//       id: 1528817084358,
+//       completed: false
+//     }
+// ];
 
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
+  
   constructor (){
     super();
     this.state={
-      todoList,
+      todoList:JSON.parse(localStorage.getItem("saveddata")),
     }
   }
   toggleCompleted = clickedTaskID => {
@@ -39,17 +41,16 @@ class App extends React.Component {
   }
 
   clearCompleted = () =>{
-    console.log("deleting..", this.state.todoList)
     this.setState({
-      todoList: this.state.todoList.filter(task=>{
-        if(task.completed === true)
-          return null
-        else
-          return task
-      })
+      todoList: this.state.todoList.filter(task=>
+        // if(task.completed === true)
+        //   return null
+        // else
+        //   return task
+        task.completed === false 
+      )
     })
-    console.log("left..", this.state.todoList)
-  }
+}
 
   addTask = taskName => {
     const newTask = {
@@ -63,17 +64,20 @@ class App extends React.Component {
   }
 
   render() {
+    console.log( "saved data is ", JSON.parse(localStorage.getItem("saveddata")));
+    localStorage.setItem("saveddata", JSON.stringify(this.state.todoList));
     return (
-      <div>
-        <h2>Welcome to your Todo App!</h2>
-          <div>
-            <TodoForm addTask={this.addTask}/>
+      <div className="app-wrapper">
+          <div className="form-wrapper">
+            <TodoForm addTask={this.addTask} clearCompleted={this.clearCompleted}/>
           </div>
           <div className="todoList-wrapper">
             <TodoList 
             tasks={this.state.todoList} 
-            toggleCompleted={this.toggleCompleted} clearCompleted={this.clearCompleted}></TodoList>
+            toggleCompleted={this.toggleCompleted} ></TodoList>
+            <button onClick={this.clearCompleted}>Clear Completed</button>
           </div>
+          
       </div>
     );
   }

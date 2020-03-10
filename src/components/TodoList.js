@@ -6,17 +6,11 @@ import Todo from "./Todo";
 class TodoList extends React.Component {
 
   render() {
-    console.log(this.props.tasks)
     return (
-      <div>
-        <div>        
+      <div className="todolist">   
           {this.props.tasks.map(Task=>(
             <Todo task={Task} toggleCompleted={this.props.toggleCompleted}/>
           ))}
-        </div>
-        <div>        
-          <button className="clear-btn" onClick={this.props.clearCompleted}>Clear completed</button>
-        </div>
       </div>
     );
   }

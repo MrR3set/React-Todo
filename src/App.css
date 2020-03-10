@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.app-wrapper{
+    margin: 0 auto;
+    width: 65%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.form-wrapper{
+    padding:3%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.form-wrapper form{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+}
+.form-wrapper input{
+    width: 80%;
+    padding: 0.3rem 0.9rem;
+    font-size: 1.5rem;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid black
+}
+.form-wrapper button{
+    width: 20%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
+    font-size: 1.2rem;
+    background: slateblue;
+    color: white;
+    transition: all 0.5s ease-in-out;
+}
+.form-wrapper button:hover{
+    background: darkslateblue;
+}
+
+.todoList-wrapper{
+    height: 100%;
+    padding: 1%;
+    text-align: center;
+}
+.todoList-wrapper button{
+    margin-top: 6%;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    background: slateblue;
+    color: white;
+    transition: all 0.5s ease-in-out;
+    padding: 0.5rem 1rem;
+}
+.todoList-wrapper button:hover{
+    background: darkslateblue;
+}
+
+.task{
+    padding: 0.1rem 1rem;
+    border-radius: 10px;
+    width: 50%;
+    text-align: left;
+    margin: 1% auto;
+    transition: all 0.5s ease-out;
+}
+.task:hover{
+    transform: scale(1.1);
+}
